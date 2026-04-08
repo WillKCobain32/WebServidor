@@ -2,17 +2,17 @@
 
 <?php
     include("config.php");
+
+    session_start();
+
+    $erro = [];
     
     if(isset($_POST["email"]) && strlen($_POST['email']) > 0){
 
-    if(!isset($_SESSION));
-    {
-        session_start();
-    }
-
-    $_SESSION['email'] = $mysqli->escape_string($_POST['email']);
-    $_SESSION['senha'] = md5(md5($_POST['senha']));
-    
+    $email = $mysqli->real_escape_string($_POST['email']);
+    $_SESSION['email_login'] = $email;
+    $senha_digitada = $_POST['senha'];
+   
 
     $sql_code = "SELECT senha, idUsuario FROM usuarios WHERE email = '$_SESSION[email]'";
     $sql_query = $mysqli->query($sql_code) or die(mysqli_error($mysqli));
@@ -21,12 +21,16 @@
     
 
     if($total == 0){
-        $echo[] = "Este email nao pertence a nenhum usuario";
+        $erro[] = "Este email nao pertence a nenhum usuario";
     }else{
-        if($dado["senha"] == $_SESSION['senha']){
+        if(password_verify($senha_digitada, $dado["senha"])){
             $_SESSION['usuarios'] = $dado['idUsuario'];
+            header('Location: sucesso.php');
+            exit();
     }else{
-        $erro[] = "senha incorreta";
+    $erro[] = 'Senha incorreta';
+
+        
     }
 
           }
@@ -47,7 +51,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 <body>
 
@@ -64,6 +68,7 @@
         <p><input value="" name="senha" type="password"></p>
         <p><a href="ForgetThePassword.php" target="_blank">Esqueceu sua senha?</a></p>
         <p><input value="Entrar" type="submit"></p>
+        <p><input href="cadastro.php" value="Cadastrar" type="submit" target="_blank"></p>
     </form>
       
 
