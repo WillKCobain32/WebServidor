@@ -18,7 +18,7 @@
     $erro[] = "E-mail invalido.";
      }    
 
-    $sql_code = "SELECT senha, codigo FROM usuario WHERE email = '$_SESSION[email]'";
+    $sql_code = "SELECT senha, codigo FROM idUsuario WHERE email = '$_SESSION[email]'";
     $sql_query = $mysqli->query($sql_code) or die(mysqli_error($mysqli));
     $dado = $sql_query->fetch_assoc();
     $total = $sql_query->num_rows; 
@@ -35,8 +35,8 @@
 
     if(mail($email,"Sua nova senha","Sua nova senha: " .$novasenha)){
 
-    $sql_code = "UPDATE usuario SET senha = '$nscriptografada' WHERE email = '$email'";
-    $sql_query = $mysqli->query($sql_code) or die($mysqli->error());
+    $sql_code = "UPDATE idUsuario SET senha = '$nscriptografada' WHERE email = '$email'";
+    $sql_query = $mysqli->query($sql_code) or die($mysqli->error);
 
     IF($sql_query){
         $erro[] = "Senha alterada com sucesso.";

@@ -14,7 +14,7 @@
     session_start();
     }
 
-    if(!isset($_SESSION["usuario"]) || !is_numeric($_SESSION["usuario"])){
+    if(!isset($_SESSION["usuarios"]) || !is_numeric($_SESSION["usuarios"])){
     header("Localtion: index.php");
 
            }
