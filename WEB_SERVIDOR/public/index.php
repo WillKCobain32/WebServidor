@@ -64,7 +64,8 @@
    // ?>
 
     <form method="POST" action="">
-        <p><input value="<?php echo $_SESSION['email']; ?>" name="email" placeholder="E-mail" type="text"></p>
+        <p><h1>Login</h1></p>
+        <p><input value="" name="email" placeholder="E-mail" type="text"></p>
         <p><input value="" name="senha" type="password"></p>
         <p><a href="ForgetThePassword.php" target="_blank">Esqueceu sua senha?</a></p>
         <p><input value="Entrar" type="submit"></p>
