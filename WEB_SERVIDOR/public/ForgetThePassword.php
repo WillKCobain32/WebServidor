@@ -51,18 +51,18 @@
     ?>
 
     <?php 
-    if(count($erro) > 0){
+    //if(count($erro) > 0){
 
-    foreach($erro as $msd){
-        echo "<p>$msg<p>";
+   // foreach($erro as $msd){
+   //     echo "<p>$msg<p>";
 
-    }
-    }
+   // }
+   // }
 
     ?>
 
     <form method="POST" action="">
-        <input value="<?php echo $_POST["email"] ?>" placeholder="Seu e-mail" name="email" type="text">
+        <input value="" placeholder="Seu e-mail" name="email" type="text">
         <input name="ok" value="ok" type="sumbit">
     </form>
 </body>

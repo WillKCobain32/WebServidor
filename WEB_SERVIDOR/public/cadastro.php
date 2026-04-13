@@ -7,42 +7,24 @@
 </head>
 <body>
     <?php
+
+    if (isset($_POST["Cadastrar"])) {
+
     include("config.php");
 
-    session_start();
-
-    if(isset($_POST["email"]) && strlen($_POST["email"]) > 0){
-
-
+    $nome = $_POST["nome"];
+    $email = $_POST["email"];
+    $senha = $_POST["senha"];
 
 
+    $result = mysqli_query($mysqli, "INSERT INTO usuarios(nome, email, senha) VALUES ('$nome', '$email', '$senha')");
 
-
-
-
-
-
-
-
-
-
-
-
+    header("Location: index.php");
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     ?>
-
-    <form action="METHOD">
+    
+    <form action="cadastro.php" method="POST">
      <p><h1>Cadastro</h1></p>   
     <p><input value=""  placeholder="nome" name="nome" type="text"></p>
     <p><input value="" placeholder="E-mail" name="email" type="text"></p>
@@ -51,7 +33,6 @@
 
 
     </form>
-
 
 </body>
 </html>

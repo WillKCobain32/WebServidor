@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
 <?php
+
+
     include("config.php");
 
     session_start();
@@ -25,7 +27,7 @@
     }else{
         if(password_verify($senha_digitada, $dado["senha"])){
             $_SESSION['usuarios'] = $dado['idUsuario'];
-            header('Location: sucesso.php');
+            header('Location: LoginTeste.php');
             exit();
     }else{
     $erro[] = 'Senha incorreta';
@@ -43,7 +45,7 @@
 
      }
 
-
+  
     
     ?>
 
@@ -62,14 +64,18 @@
 
    // }
    // ?>
-
-    <form method="POST" action="">
-        <p><h1>Login</h1></p>
+    <div>
+    <form action="TesteLogin.php" method="POST">
         <p><input value="" name="email" placeholder="E-mail" type="text"></p>
         <p><input value="" name="senha" type="password"></p>
+        
+        <p><input value="Entrar" name="submit" type="submit"></p>
+
+    </form>
+    </div>  
+    <form action="" method="POST"></form>
         <p><a href="ForgetThePassword.php" target="_blank">Esqueceu sua senha?</a></p>
-        <p><input value="Entrar" type="submit"></p>
-        <p><input href="cadastro.php" value="Cadastrar" type="submit" target="_blank"></p>
+        <p><a href="cadastro.php" target="_blank">Cadastrar</a></p>
     </form>
       
 
